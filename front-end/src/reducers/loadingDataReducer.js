@@ -4,10 +4,14 @@ let initialState = []
 
 const dataReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.FETCH_PIECHART_DATA:
-      return [
-        ...action.data
-      ]
+    case types.START_FETCH_PIECHART_DATA:
+      return {
+        complete: action.complete
+      }
+    case types.STOP_FETCH_PIECHART_DATA:
+      return {
+        complete: action.complete
+      }
     default:
       return state
   }

@@ -10,6 +10,10 @@ import { fetchPieChartData } from '../actions'
 const colorScale = ["#79c1b6", "#a285de"]
 
 class PieChart extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   componentDidMount() {
     this.props.fetchPieChartData()
   }
