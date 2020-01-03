@@ -13,16 +13,3 @@ export const fetchPieChartData = () => {
       )
   }
 }
-
-export const fetchLineChartData = () => {
-  return dispatch => {
-    axios.get('http://localhost:8081/request/device_summary1')
-      .then(res => {
-        dispatch({
-          type: types.FETCH_LINECHART_DATA,
-          data: res.data.data
-        })
-      }
-      )
-  }
-}
