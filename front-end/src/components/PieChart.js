@@ -6,12 +6,13 @@ import { connect } from 'react-redux'
 
 import { PieChartItem } from './PieChartItem'
 import { fetchPieChartData } from '../actions'
+import { bindActionCreators } from 'redux'
 
 const colorScale = ["#79c1b6", "#a285de"]
 
 class PieChart extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchPieChartData())
+    this.props.fetchPieChartData()
   }
 
   render() {
@@ -46,4 +47,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(PieChart)
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ fetchPieChartData }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PieChart)

@@ -7,9 +7,14 @@ export const fetchPieChartData = () => {
       .then(res => {
         dispatch({
           type: types.FETCH_PIECHART_DATA,
-          data: res.data.data
+          data: res.data
         })
-      }
-      )
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+
+      });
   }
 }
