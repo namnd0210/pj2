@@ -1,9 +1,8 @@
 import * as types from '../actions/actionTypes'
 
-let initialState = [] // ok
+let initialState = []
 
 const dataReducer = (state = initialState, action) => {
-  console.log("reducer",action)
   switch(action.type) {
     case types.FETCH_PIECHART_DATA:
       return [

@@ -4,7 +4,7 @@ import {
 } from 'victory'
 import { connect } from 'react-redux'
 
-import { Item } from './Item'
+import { PieChartItem } from './PieChartItem'
 import { fetchPieChartData } from '../actions'
 
 const colorScale = ["#79c1b6", "#a285de"]
@@ -16,7 +16,6 @@ class PieChart extends Component {
 
   render() {
     const { data } = this.props
-    console.log("render", data)
     return (
       <svg viewBox="0 0 800 800">
         <VictoryPie
@@ -33,7 +32,7 @@ class PieChart extends Component {
           rowGutter={{ top: 0, bottom: 60 }}
           data={data}
           standalone={false}
-          dataComponent={<Item />}
+          dataComponent={<PieChartItem />}
           colorScale={colorScale}
         />
       </svg >
