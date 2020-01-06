@@ -11,7 +11,8 @@ app.use(cors())
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.get('/request/device_summary', (req, res) =>
-  res.send(file)
+  res.setTimeout(10000, () =>
+    res.send(file))
 )
 
 
