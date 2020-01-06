@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Spinner } from 'reactstrap'
 
-import { fetchPieChartData } from '../actions'
-
-
 class Loading extends Component {
   render() {
     const { complete } = this.props.complete
@@ -31,10 +28,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchPieChartData: () => dispatch(fetchPieChartData()),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Loading)
+export default connect(mapStateToProps)(Loading)

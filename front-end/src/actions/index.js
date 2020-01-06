@@ -7,7 +7,7 @@ export const fetchPieChartData = () => {
       type: types.START_FETCH_PIECHART_DATA,
       complete: false
     })
-    await axios.get('http://localhost:8081/request/device_summary')
+    axios.get('http://localhost:8081/request/device_summary')
       .then( res => {
         dispatch({
           type: types.FETCH_PIECHART_DATA,
