@@ -1,9 +1,10 @@
-import { combineReducers } from 'redux'
-import pieChartData from './pieChartDataReducer'
-import loadingData from './loadingDataReducer'
+import { combineReducers } from 'redux';
+
+import data from './dataReducer';
+import loadingData from './loadingDataReducer';
 
 const reducers = combineReducers({
-  pieChartData: pieChartData,
+  data: data,
   loadingData: loadingData
 })
 

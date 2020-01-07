@@ -1,9 +1,18 @@
 import * as types from '../actions/actionTypes'
 
-let initialState = []
+let initialState = {}
 
 const dataReducer = (state = initialState, action) => {
+  console.log(action)
   switch (action.type) {
+    case types.START_FETCH_BARCHART_DATA:
+      return {
+        complete: action.complete
+      }
+    case types.STOP_FETCH_BARCHART_DATA:
+      return {
+        complete: action.complete
+      }
     case types.START_FETCH_PIECHART_DATA:
       return {
         complete: action.complete

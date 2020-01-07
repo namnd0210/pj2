@@ -4,14 +4,14 @@ import {
 } from 'victory'
 import { connect } from 'react-redux'
 
-import { PieChartItem } from './PieChartItem'
+import PieChartItem from './PieChartItem'
 import { fetchPieChartData } from '../actions'
 
 const colorScale = ["#79c1b6", "#a285de"]
 
 class PieChart extends Component {
   componentDidMount() {
-    this.props.fetchPieChartData()
+    this.props.fetchPieChartData();
   }
 
   render() {
@@ -36,13 +36,13 @@ class PieChart extends Component {
           colorScale={colorScale}
         />
       </svg >
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    data: state.pieChartData
+    data: state.data
   }
 }
 

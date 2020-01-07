@@ -2,13 +2,12 @@ import React from 'react';
 
 import PieChart from './PieChart';
 import Loading from './Loading';
-
+import Ranking from './Ranking'
 
 function App() {
   return (
     <div className="App">
-      <Loading />
-      <PieChart />
+      <Ranking />
     </div>
   );
 }
