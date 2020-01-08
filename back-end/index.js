@@ -3,17 +3,21 @@ const app = express()
 const port = 8081
 var cors = require('cors')
 
-const file = require('./db.json')
+const deviceSummaryFile = require('./summaryDeviceDB.json')
+const rankingFile = require('./rankingDB.json')
 
 app.use(cors())
-
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.get('/request/device_summary', (req, res) =>
   res.setTimeout(10000, () =>
-    res.send(file))
+    res.send(deviceSummaryFile))
 )
 
+app.get('/request/ranking', (req, res) =>
+  res.setTimeout(15000, () =>
+    res.send(rankingFile))
+)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

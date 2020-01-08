@@ -2,16 +2,17 @@ import * as types from './actionTypes'
 import axios from 'axios'
 
 export const fetchPieChartData = () => {
-  return async dispatch => {
+  return dispatch => {
     dispatch({
       type: types.START_FETCH_PIECHART_DATA,
-      complete: false
-    })
+      isLoading: true
+    })  
     axios.get('http://localhost:8081/request/device_summary')
-      .then( res => {
+      .then(res => {
         dispatch({
           type: types.FETCH_PIECHART_DATA,
-          data: res.data
+          data: res.data,
+          isLoading: true
         })
       })
       .catch((error) => {
@@ -20,7 +21,33 @@ export const fetchPieChartData = () => {
       .finally(() => {
         dispatch({
           type: types.STOP_FETCH_PIECHART_DATA,
-          complete: true
+          isLoading: false
+        })
+      });
+  }
+}
+
+export const fetchBarChartData = () => {
+  return dispatch => {
+    dispatch({
+      type: types.START_FETCH_BARCHART_DATA,
+      isLoading: true
+    })
+    axios.get('http://localhost:8081/request/ranking')
+      .then(res => {
+        dispatch({
+          type: types.FETCH_BARCHART_DATA,
+          data: res.data,
+          isLoading: true
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        dispatch({
+          type: types.STOP_FETCH_BARCHART_DATA,
+          isLoading: false
         })
       });
   }
