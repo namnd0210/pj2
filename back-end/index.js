@@ -2,16 +2,17 @@ const express = require('express')
 const app = express()
 const port = 8081
 var cors = require('cors')
+const a = require('./summaryDeviceDB.js')
 
-const deviceSummaryFile = require('./summaryDeviceDB.json')
-const rankingFile = require('./rankingDB.json')
+const deviceSummaryFile = a
+const rankingFile = require('./rankingDB.js')
 
 app.use(cors())
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.get('/request/device_summary', (req, res) =>
-  res.setTimeout(10000, () =>
+  res.setTimeout(10000, () => 
     res.send(deviceSummaryFile))
 )
 

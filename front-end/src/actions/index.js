@@ -12,7 +12,7 @@ export const fetchPieChartData = () => {
         dispatch({
           type: types.FETCH_PIECHART_DATA,
           data: res.data,
-          isLoading: true
+          isLoading: false
         })
       })
       .catch((error) => {
@@ -38,7 +38,7 @@ export const fetchBarChartData = () => {
         dispatch({
           type: types.FETCH_BARCHART_DATA,
           data: res.data,
-          isLoading: true
+          isLoading: false
         })
       })
       .catch((error) => {

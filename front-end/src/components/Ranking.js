@@ -17,9 +17,9 @@ class Ranking extends Component {
   render() {
     const { data, isLoading } = this.props.barChartData;
     const type = "grow";
-    data.sort((o1, o2) => o1.y - o2.y);
+    const handledData = _.sortBy(data, ['y'], ['desc']);
     return (
-      <svg viewBox="0 -50 500 600">
+      <svg viewBox="0 -50 600 600">
         {isLoading && <Loading type={type} />}
         {!isLoading && <VictoryChart
           standalone={false}
@@ -36,7 +36,7 @@ class Ranking extends Component {
             alignment="start"
             style={{ data: { fill: '#ededed' } }}
             standalone={false}
-            data={data}
+            data={handledData}
             barRatio={1.5}
           />
           <VictoryAxis dependentAxis
@@ -55,7 +55,7 @@ class Ranking extends Component {
             }}
             tickLabelComponent={
               <CustomLabel
-                data={data}
+                data={handledData}
                 isLeft={true}
               />}
           />
@@ -66,7 +66,7 @@ class Ranking extends Component {
             }}
             tickLabelComponent={
               <CustomLabel
-                data={data}
+                data={handledData}
                 isLeft={false}
               />}
           />

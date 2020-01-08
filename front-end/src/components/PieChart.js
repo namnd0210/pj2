@@ -20,7 +20,7 @@ class PieChart extends Component {
     const { data, isLoading } = this.props.pieChartData;
     const type = "border";
     return (
-      <svg viewBox="0 0 600 600">
+      <svg viewBox="0 0 700 700">
         {isLoading && <Loading type={type} />}
         {!isLoading && <g>
           <VictoryPie
