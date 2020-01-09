@@ -2,9 +2,8 @@ const express = require('express')
 const app = express()
 const port = 8081
 var cors = require('cors')
-const a = require('./summaryDeviceDB.js')
+const deviceSummaryFile = require('./summaryDeviceDB.js')
 
-const deviceSummaryFile = a
 const rankingFile = require('./rankingDB.js')
 
 app.use(cors())
