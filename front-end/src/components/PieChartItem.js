@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const PieChartItem = (data) => {
+export default function PieChartItem(data) {
   const { style, x, y } = data
   const sum = data.data.reduce((a, b) => a + b.y, 0)
   return (

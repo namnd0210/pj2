@@ -1,31 +1,17 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Spinner } from 'reactstrap'
+import React, { Component } from 'react';
+import { Spinner } from 'reactstrap';
 
-class Loading extends Component {
+export default class Loading extends Component {
   render() {
-    const { complete } = this.props.complete
+    const { type } = this.props;
+    const y = type === "grow" ? "50" : "130"
     return (
-      <div className="d-flex justify-content-center">
-        {!complete && <div>
-          <Spinner type="grow" color="primary" />
-          <Spinner type="grow" color="secondary" />
-          <Spinner type="grow" color="success" />
-          <Spinner type="grow" color="danger" />
-          <Spinner type="grow" color="warning" />
-          <Spinner type="grow" color="info" />
-          <Spinner type="grow" color="light" />
-          <Spinner type="grow" color="dark" />
-        </div>}
-      </div>
+      <foreignObject x="200" y={y} width="64" height="64">
+        <Spinner style={{ width: "2.5rem", height: "2.5rem" }}
+          type={type}
+          color="primary" />
+      </foreignObject>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    complete: state.loadingData
-  }
-}
-
-export default connect(mapStateToProps)(Loading)
