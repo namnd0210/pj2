@@ -16,11 +16,10 @@ class Ranking extends Component {
 
   render() {
     const { data, isLoading } = this.props.barChartData;
-    const type = "grow";
     const handledData = _.sortBy(data, ['y'], ['desc']);
     return (
       <svg viewBox="0 -50 600 600">
-        {isLoading && <Loading type={type} />}
+        {isLoading && <Loading color="#eb09eb" />}
         {!isLoading && <VictoryChart
           standalone={false}
         >

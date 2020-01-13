@@ -1,0 +1,8 @@
+.gradientLine {
+  max-width: 100%;
+  height: 10px;
+  background-image: linear-gradient(to right, #DEE5EE, #dfd8f9, #c1b1f1, #a68be7, #8b63db);
+  margin-left: 14px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
