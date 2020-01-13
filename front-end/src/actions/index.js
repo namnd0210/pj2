@@ -52,3 +52,29 @@ export const fetchBarChartData = () => {
       });
   }
 }
+
+export const fetchHeatChartData = () => {
+  return dispatch => {
+    dispatch({
+      type: types.START_FETCH_HEATCHART_DATA,
+      isLoading: true
+    })
+    axios.get('http://localhost:8081/request/device_by_hour')
+      .then(res => {
+        dispatch({
+          type: types.FETCH_HEATCHART_DATA,
+          data: res.data,
+          isLoading: false
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        dispatch({
+          type: types.STOP_FETCH_HEATCHART_DATA,
+          isLoading: false
+        })
+      });
+  }
+}

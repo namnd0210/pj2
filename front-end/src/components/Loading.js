@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Spinner } from 'reactstrap';
+import Loader from 'react-loader-spinner';
 
 export default class Loading extends Component {
   render() {
-    const { type } = this.props;
-    const y = type === "grow" ? "50" : "130"
+    const { color } = this.props;
+    const y = color === "#eb09eb" ? -50 : 0;
     return (
-      <foreignObject x="200" y={y} width="64" height="64">
-        <Spinner style={{ width: "2.5rem", height: "2.5rem" }}
-          type={type}
-          color="primary" />
+      <foreignObject y={y} width="100%" height="100%">
+        <div className="d-flex justify-content-center ">
+          <Loader type="TailSpin" color={color} height={100} width={100} />
+        </div>
       </foreignObject>
     )
   }
