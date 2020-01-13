@@ -16,16 +16,15 @@ class HeatChart extends Component {
     const series = this.props.data.data;
     const isLoading = this.props.data.isLoading;
 
-    let arr = []
-    _.map(series,
-      (day) => {
-        const sum = _.reduce(day.data, (a, b) => a + b.y, 0)
-        arr.push(sum)
-      }
-    )
-    const summarySeries = [{
-      data: [...arr]
-    }]
+    let summarySeries =
+      [{
+        data: _.map(series,
+          (day) => {
+            return _.reduce(day.data, (a, b) => a + b.y, 0)
+          }
+        )
+      }]
+
 
     const options = {
       chart: {
@@ -113,7 +112,7 @@ class HeatChart extends Component {
           offsetY: 2,
           minHeight: 30,
           formatter: (val, index) => {
-            return val == 0 || val == maxVal ? val : ''
+            return val === 0 || val === maxVal ? val : ''
           },
         },
       },
@@ -121,7 +120,9 @@ class HeatChart extends Component {
         labels: {
           offsetY: 1,
           formatter: (val, index) => {
-            return _.upperCase(val.toString().substring(0, 1)) + _.lowerCase(val.toString().substring(1, 3))
+            const upperCase = _.upperCase(val.toString().substring(0, 1))
+            const lowerCase = _.lowerCase(val.toString().substring(1, 3))
+            return `${upperCase}${lowerCase}`
           }
         }
       },

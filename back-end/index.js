@@ -23,7 +23,7 @@ app.get('/request/ranking', (req, res) =>
 )
 
 app.get('/request/device_by_hour', (req, res) =>
-  res.setTimeout(5000, () =>
+  res.setTimeout(500, () =>
     res.send(deviceByHourFile))
 )
 
