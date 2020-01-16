@@ -5,8 +5,8 @@ import {
 import { connect } from 'react-redux';
 
 import PieChartItem from './PieChartItem';
-import { fetchPieChartData } from '../actions';
-import Loading from './Loading';
+import { fetchPieChartData } from '../../actions';
+import Loading from '../Loading';
 
 const colorScale = ["#79c1b6", "#a285de"];
 

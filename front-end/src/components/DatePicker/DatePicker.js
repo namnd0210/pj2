@@ -6,7 +6,7 @@ import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
-import { setDate } from '../actions';
+import { setDate } from '../../actions';
 
 
 class DatePicker extends Component {

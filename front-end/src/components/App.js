@@ -1,9 +1,9 @@
 import React from 'react';
 
-import DatePicker from './DatePicker';
-import PieChart from './PieChart';
-import Ranking from './Ranking';
-import HeatChart from './HeatChart';
+import DatePicker from './DatePicker/DatePicker';
+import PieChart from './PieChart/PieChart';
+import Ranking from './barChart/Ranking';
+import HeatChart from './HeatChart/HeatChart';
 
 function App() {
   return (

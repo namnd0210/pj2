@@ -3,8 +3,8 @@ import Chart from 'react-apexcharts';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import { fetchHeatChartData } from '../actions';
-import Loading from './Loading';
+import { fetchHeatChartData } from '../../actions';
+import Loading from '../Loading';
 import './HeatChart.css';
 
 class HeatChart extends Component {
@@ -129,7 +129,7 @@ class HeatChart extends Component {
         {isLoading && <Loading color="#15e6d4" />}
         {!isLoading && <div className="container">
           <div className="row">
-            <div className="col-lg-9">
+            <div className="col-lg-9 pr-0">
               <Chart
                 options={options}
                 series={series}
@@ -157,7 +157,7 @@ class HeatChart extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3" >
+            <div className="col-lg-3 pl-0" >
               <Chart
                 options={summaryOptions}
                 series={summarySeries}

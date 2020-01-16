@@ -5,9 +5,9 @@ import {
 import _ from 'lodash';
 import { connect } from 'react-redux';
 
-import { fetchBarChartData } from '../actions';
+import { fetchBarChartData } from '../../actions';
 import CustomLabel from './CustomLabel';
-import Loading from './Loading';
+import Loading from '../Loading';
 
 class Ranking extends Component {
   componentDidMount() {
