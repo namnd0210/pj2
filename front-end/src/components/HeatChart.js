@@ -9,22 +9,21 @@ import './HeatChart.css';
 
 class HeatChart extends Component {
   componentDidMount() {
-    this.props.fetchHeatChartData();
+    const { startDate, endDate } = this.props.datePickerData;
+    this.props.fetchHeatChartData(startDate, endDate);
   }
 
   render() {
     const series = this.props.data.data;
     const isLoading = this.props.data.isLoading;
 
-    let summarySeries =
-      [{
-        data: _.map(series,
-          (day) => {
-            return _.reduce(day.data, (a, b) => a + b.y, 0)
-          }
-        )
-      }]
-
+    let summarySeries = [{
+      data: _.map(series,
+        (day) => {
+          return _.reduce(day.data, (a, b) => a + b.y, 0)
+        }
+      )
+    }]
 
     const options = {
       chart: {
@@ -54,12 +53,7 @@ class HeatChart extends Component {
           minHeight: 30,
           formatter: (val, index) => {
             const hour = Number(val.toString().slice(-5, -3))
-            if (hour % 2 == 0) {
-              if (hour <= 12) {
-                return hour
-              }
-              return hour - 12
-            }
+            return hour % 2 === 0 ? (hour > 12 ? hour - 12 : hour) : ''
           }
         }
       },
@@ -180,13 +174,14 @@ class HeatChart extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.heatChartData
+    data: state.heatChartData,
+    datePickerData: state.datePickerData
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchHeatChartData: () => dispatch(fetchHeatChartData())
+    fetchHeatChartData: (startDate, endDate) => dispatch(fetchHeatChartData(startDate, endDate))
   }
 }
 

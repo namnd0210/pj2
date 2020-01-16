@@ -1,5 +1,6 @@
 import React from 'react';
 
+import DatePicker from './DatePicker';
 import PieChart from './PieChart';
 import Ranking from './Ranking';
 import HeatChart from './HeatChart';
@@ -7,6 +8,9 @@ import HeatChart from './HeatChart';
 function App() {
   return (
     <div className="container">
+      <div>
+        <DatePicker />
+      </div>
       <div className="row">
         <div className="col-md-12 col-lg-6">
           <h2>Summary Device</h2>
