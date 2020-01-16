@@ -15,7 +15,7 @@ export default function PieChartItem(data) {
         {data.datum.y}
       </text>
       <text x={x} y={y + 30} fontSize={25}>
-        {data.datum.y / sum * 100}%
+        {Math.round(data.datum.y / sum * 100)}%
       </text>
     </svg >
   )

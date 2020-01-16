@@ -5,15 +5,16 @@ import {
 import { connect } from 'react-redux';
 
 import PieChartItem from './PieChartItem';
-import { fetchPieChartData } from '../actions';
-import Loading from './Loading';
+import { fetchPieChartData } from '../../actions';
+import Loading from '../Loading';
 
 const colorScale = ["#79c1b6", "#a285de"];
 
 
 class PieChart extends Component {
   componentDidMount() {
-    this.props.fetchPieChartData();
+    const { startDate, endDate } = this.props.datePickerData;
+    this.props.fetchPieChartData(startDate, endDate);
   }
 
   render() {
@@ -47,13 +48,14 @@ class PieChart extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    pieChartData: state.pieChartData
+    pieChartData: state.pieChartData,
+    datePickerData: state.datePickerData
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchPieChartData: () => dispatch(fetchPieChartData())
+    fetchPieChartData: (startDate, endDate) => dispatch(fetchPieChartData(startDate, endDate))
   }
 }
 

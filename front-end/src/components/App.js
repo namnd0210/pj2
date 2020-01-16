@@ -1,12 +1,16 @@
 import React from 'react';
 
-import PieChart from './PieChart';
-import Ranking from './Ranking';
-import HeatChart from './HeatChart';
+import DatePicker from './DatePicker/DatePicker';
+import PieChart from './PieChart/PieChart';
+import Ranking from './barChart/Ranking';
+import HeatChart from './HeatChart/HeatChart';
 
 function App() {
   return (
     <div className="container">
+      <div>
+        <DatePicker />
+      </div>
       <div className="row">
         <div className="col-md-12 col-lg-6">
           <h2>Summary Device</h2>

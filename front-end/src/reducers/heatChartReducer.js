@@ -12,14 +12,9 @@ export default function (state = initialState, action) {
         ...state,
         isLoading: true
       }
-    case types.FETCH_HEATCHART_DATA:
-      return {
-        data: action.data,
-        isLoading: false
-      }
     case types.STOP_FETCH_HEATCHART_DATA:
       return {
-        ...state,
+        data: action.data,
         isLoading: false
       }
     default:

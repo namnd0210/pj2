@@ -11,15 +11,10 @@ export default function (state = initialState, action) {
         ...state,
         isLoading: action.isLoading
       }
-    case types.FETCH_PIECHART_DATA:
+    case types.STOP_FETCH_PIECHART_DATA:
       return {
         isLoading: action.isLoading,
         data: action.data
-      }
-    case types.STOP_FETCH_PIECHART_DATA:
-      return {
-        ...state,
-        isLoading: action.isLoading
       }
     default:
       return state

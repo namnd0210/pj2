@@ -5,13 +5,14 @@ import {
 import _ from 'lodash';
 import { connect } from 'react-redux';
 
-import { fetchBarChartData } from '../actions';
+import { fetchBarChartData } from '../../actions';
 import CustomLabel from './CustomLabel';
-import Loading from './Loading';
+import Loading from '../Loading';
 
 class Ranking extends Component {
   componentDidMount() {
-    this.props.fetchBarChartData();
+    const { startDate, endDate } = this.props.datePickerData;
+    this.props.fetchBarChartData(startDate, endDate);
   }
 
   render() {
@@ -77,13 +78,14 @@ class Ranking extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    barChartData: state.barChartData
+    barChartData: state.barChartData,
+    datePickerData: state.datePickerData
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchBarChartData: () => dispatch(fetchBarChartData())
+    fetchBarChartData: (startDate, endDate) => dispatch(fetchBarChartData(startDate, endDate))
   }
 }
 
