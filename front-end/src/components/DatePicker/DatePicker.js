@@ -23,6 +23,7 @@ class DatePicker extends Component {
     return (
       <div>
         <DateRangePicker
+          className="mb-5"
           startDate={this.state.startDate} // momentPropTypes.momentObj or null,
           startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
           endDate={this.state.endDate} // momentPropTypes.momentObj or null,

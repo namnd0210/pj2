@@ -1,27 +1,33 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import {
   VictoryChart, VictoryBar, VictoryAxis, VictoryLabel
 } from 'victory';
 import _ from 'lodash';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
 import { fetchBarChartData } from '../../actions';
 import CustomLabel from './CustomLabel';
 import Loading from '../Loading';
 
-class Ranking extends Component {
-  componentDidMount() {
-    const { startDate, endDate } = this.props.datePickerData;
-    this.props.fetchBarChartData(startDate, endDate);
-  }
+export default function Ranking() {
+  const { startDate, endDate } = useSelector(state => state.datePickerData)
+  const { data, isLoading } = useSelector(state => state.barChartData)
+  const dispatch = useDispatch()
 
-  render() {
-    const { data, isLoading } = this.props.barChartData;
-    const handledData = _.sortBy(data, ['y'], ['desc']);
-    return (
-      <svg viewBox="0 -50 600 600">
-        {isLoading && <Loading color="#eb09eb" />}
-        {!isLoading && <VictoryChart
+  useEffect(() => {
+    dispatch(fetchBarChartData(startDate, endDate));
+  }, [])
+
+  const handledData = _.sortBy(data, ['y'], ['desc']);
+
+  return (
+    <svg viewBox="0 -50 600 600">
+      <foreignObject x="0" y="-50" width="100%" height="50px">
+        <div><h2>Ranking</h2></div>
+      </foreignObject>
+      {isLoading && <Loading color="#eb09eb" />}
+      {!isLoading &&
+        <VictoryChart
           standalone={false}
         >
           <VictoryLabel x={51} y={0}
@@ -71,22 +77,6 @@ class Ranking extends Component {
               />}
           />
         </VictoryChart>}
-      </svg>
-    )
-  }
+    </svg>
+  )
 }
-
-const mapStateToProps = (state) => {
-  return {
-    barChartData: state.barChartData,
-    datePickerData: state.datePickerData
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchBarChartData: (startDate, endDate) => dispatch(fetchBarChartData(startDate, endDate))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Ranking)

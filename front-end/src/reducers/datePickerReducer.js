@@ -2,8 +2,8 @@ import * as types from '../actions/actionTypes';
 import moment from 'moment';
 
 const initialState = {
-  startDate: null,
-  endDate: null,
+  startDate: moment().format('DD-MM-YYYY'),
+  endDate: moment().add(1, 'day').format('DD-MM-YYYY'),
 };
 
 export default (state = initialState, action) => {
