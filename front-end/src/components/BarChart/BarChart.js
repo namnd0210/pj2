@@ -9,14 +9,13 @@ import { fetchBarChartData } from '../../actions';
 import CustomLabel from './CustomLabel';
 import Loading from '../Loading';
 
-export default function Ranking() {
-  const { startDate, endDate } = useSelector(state => state.datePickerData)
+export default function Ranking({ startDate, endDate }) {
   const { data, isLoading } = useSelector(state => state.barChartData)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchBarChartData(startDate, endDate));
-  }, [])
+  }, [startDate, endDate])
 
   const handledData = _.sortBy(data, ['y'], ['desc']);
 

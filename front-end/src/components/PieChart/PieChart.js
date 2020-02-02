@@ -8,19 +8,18 @@ import _ from 'lodash';
 import PieChartItem from './PieChartItem';
 import { fetchPieChartData } from '../../actions';
 import Loading from '../Loading';
-import OSPicker from './Modal';
+import Modal from './Modal';
 
 const colorScale = ['#a65b5b', '#f2865e', '#f2bea0', '#fad56a', '#f8e4a9', '#788abf'];
 
-export default function PieChart() {
+export default function PieChart({ startDate, endDate }) {
   const { isLoading, data } = useSelector(state => state.pieChartData)
-  const { startDate, endDate } = useSelector(state => state.datePickerData)
   const dispatch = useDispatch()
   const [handleData, setHandleData] = useState(data)
 
   useEffect(() => {
     dispatch(fetchPieChartData(startDate, endDate));
-  }, [])
+  }, [startDate, endDate])
 
   useEffect(() => {
     if (data !== []) {
@@ -33,7 +32,7 @@ export default function PieChart() {
       <foreignObject x="0" y="0" width="100%" height="50px">
         <div className="row">
           <h2 className="col-7">Summary Device</h2>
-          {!isLoading && <OSPicker className="col-5" />}
+          {!isLoading && <Modal className="col-5" startDate={startDate} endDate={endDate} />}
         </div>
       </foreignObject>
       {isLoading && <Loading color="#15e62a" />}

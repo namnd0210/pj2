@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import _ from 'lodash';
@@ -7,9 +7,8 @@ import { faCheck, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 import { fetchPieChartData } from '../../actions';
 
-export default () => {
+export default ({ startDate, endDate }) => {
   const { data } = useSelector(state => state.pieChartData)
-  const { startDate, endDate } = useSelector(state => state.datePickerData);
   const [handleData, setHandleData] = useState(data);
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);

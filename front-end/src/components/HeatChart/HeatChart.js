@@ -7,14 +7,13 @@ import { fetchHeatChartData } from '../../actions';
 import Loading from '../Loading';
 import './HeatChart.css';
 
-export default function HeatChart() {
+export default function HeatChart({ startDate, endDate }) {
   const { isLoading, data } = useSelector(state => state.heatChartData)
-  const { startDate, endDate } = useSelector(state => state.datePickerData)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchHeatChartData(startDate, endDate));
-  }, [])
+  }, [startDate, endDate])
 
   const series = Object.assign([], data)
   let summarySeries = [{

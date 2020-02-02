@@ -12,8 +12,8 @@ export const fetchPieChartData = (startDate, endDate, data = []) => dispatch => 
     method: 'get',
     params: {
       data: data,
-      startDate: startDate,
-      endDate: endDate
+      from_date: startDate,
+      to_date: endDate
     },
     paramsSerializer: params => {
       return qs.stringify(params, { arrayFormat: 'repeat' })
