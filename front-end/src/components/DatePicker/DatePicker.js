@@ -21,7 +21,6 @@ export default function DatePicker() {
     if ((prevStartDate !== startDate.format('DD-MM-YYYY') || prevEndDate !== endDate.format('DD-MM-YYYY')) &&
       startDate !== null && endDate !== null)
       dispatch(setDate(startDate.format('DD-MM-YYYY'), endDate.format('DD-MM-YYYY')))
-
   }
 
   return (

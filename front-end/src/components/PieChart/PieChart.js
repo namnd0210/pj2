@@ -28,16 +28,14 @@ export default function PieChart({ startDate, endDate }) {
   }, [data])
 
   return (
-    <svg viewBox="0 0 700 700">
-      <foreignObject x="0" y="0" width="100%" height="50px">
-        <div className="row">
-          <h2 className="col-7">Summary Device</h2>
-          {!isLoading && <Modal className="col-5" startDate={startDate} endDate={endDate} />}
-        </div>
-      </foreignObject>
+    <div>
+      <div className="row">
+        <h2 className="col-7">Summary Device</h2>
+        {!isLoading && <Modal className="col-5" startDate={startDate} endDate={endDate} />}
+      </div>
       {isLoading && <Loading color="#15e62a" />}
       {!isLoading &&
-        <g>
+        <svg viewBox="0 0 700 700">
           <VictoryPie
             standalone={false}
             data={handleData}
@@ -55,7 +53,7 @@ export default function PieChart({ startDate, endDate }) {
             dataComponent={<PieChartItem />}
             colorScale={colorScale}
           />
-        </g>}
-    </svg>
+        </svg>}
+    </div>
   );
 }

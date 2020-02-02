@@ -20,62 +20,62 @@ export default function Ranking({ startDate, endDate }) {
   const handledData = _.sortBy(data, ['y'], ['desc']);
 
   return (
-    <svg viewBox="0 -50 600 600">
-      <foreignObject x="0" y="-50" width="100%" height="50px">
-        <div><h2>Ranking</h2></div>
-      </foreignObject>
+    <div>
+      <h2>Ranking</h2>
       {isLoading && <Loading color="#eb09eb" />}
       {!isLoading &&
-        <VictoryChart
-          standalone={false}
-        >
-          <VictoryLabel x={51} y={0}
+        <svg viewBox="0 -50 600 600">
+          <VictoryChart
             standalone={false}
-            text="Day"
-          />
-          <VictoryLabel x={340} y={0}
-            standalone={false}
-            text="Number"
-          />
-          <VictoryBar horizontal
-            alignment="start"
-            style={{ data: { fill: '#ededed' } }}
-            standalone={false}
-            data={handledData}
-            barRatio={1.5}
-          />
-          <VictoryAxis dependentAxis
-            standalone={false}
-            style={{
-              axis: { stroke: "#fff" },
-              tickLabels: { fill: "none" },
-            }}
-          />
-          <VictoryAxis
-            standalone={false}
-            style={{
-              axis: { stroke: "#fff" },
-              grid: { stroke: "#c9cdd4" },
-              tickLabels: { fill: "none" }
-            }}
-            tickLabelComponent={
-              <CustomLabel
-                data={handledData}
-                isLeft={true}
-              />}
-          />
-          <VictoryAxis
-            standalone={false}
-            style={{
-              axis: { stroke: "#fff" }
-            }}
-            tickLabelComponent={
-              <CustomLabel
-                data={handledData}
-                isLeft={false}
-              />}
-          />
-        </VictoryChart>}
-    </svg>
+          >
+            <VictoryLabel x={51} y={0}
+              standalone={false}
+              text="Day"
+            />
+            <VictoryLabel x={340} y={0}
+              standalone={false}
+              text="Number"
+            />
+            <VictoryBar horizontal
+              alignment="start"
+              style={{ data: { fill: '#ededed' } }}
+              standalone={false}
+              data={handledData}
+              barRatio={1.5}
+            />
+            <VictoryAxis dependentAxis
+              standalone={false}
+              style={{
+                axis: { stroke: "#fff" },
+                tickLabels: { fill: "none" },
+              }}
+            />
+            <VictoryAxis
+              standalone={false}
+              style={{
+                axis: { stroke: "#fff" },
+                grid: { stroke: "#c9cdd4" },
+                tickLabels: { fill: "none" }
+              }}
+              tickLabelComponent={
+                <CustomLabel
+                  data={handledData}
+                  isLeft={true}
+                />}
+            />
+            <VictoryAxis
+              standalone={false}
+              style={{
+                axis: { stroke: "#fff" }
+              }}
+              tickLabelComponent={
+                <CustomLabel
+                  data={handledData}
+                  isLeft={false}
+                />}
+            />
+          </VictoryChart>}
+      </svg>}
+    </div>
   )
 }

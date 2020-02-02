@@ -10,10 +10,10 @@ function App() {
   const { startDate, endDate } = useSelector(state => state.datePickerData);
   return (
     <div className="container">
-      <div>
+      <div className="mb-4">
         <DatePicker />
       </div>
-      <div className="row">
+      <div className="row" style={{ height: "450px" }}>
         <div className="col-md-12 col-lg-6">
           <PieChart startDate={startDate} endDate={endDate} />
         </div>
@@ -21,7 +21,7 @@ function App() {
           <BarChart startDate={startDate} endDate={endDate} />
         </div>
       </div>
-      <div className="row">
+      <div className="row" style={{ height: "450px" }}>
         <div className="col-12">
           <HeatChart startDate={startDate} endDate={endDate} />
         </div>

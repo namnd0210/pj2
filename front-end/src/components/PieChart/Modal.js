@@ -13,7 +13,10 @@ export default ({ startDate, endDate }) => {
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
 
-  const toggle = () => setModal(!modal);
+  const toggle = () => {
+    setModal(!modal)
+    if(modal) dispatch(fetchPieChartData(startDate, endDate, handleData))
+  };
 
   const onClick = (item, index) => {
     setHandleData([
@@ -23,16 +26,11 @@ export default ({ startDate, endDate }) => {
     ])
   }
 
-  const setOS = () => {
-    dispatch(fetchPieChartData(startDate, endDate, handleData))
-    toggle();
-  }
-
   return (
     <div>
       <Button color="success" onClick={toggle} style={{ padding: "10px 20px" }}>+</Button>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle} onClick={setOS} charCode={<FontAwesomeIcon icon={faAngleDown} />}></ModalHeader>
+        <ModalHeader toggle={toggle} charCode={<FontAwesomeIcon icon={faAngleDown} />}></ModalHeader>
         <ModalBody>
           <div>
             {
@@ -54,7 +52,7 @@ export default ({ startDate, endDate }) => {
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={setOS}>OK</Button>
+          <Button color="primary" onClick={toggle}>OK</Button>
         </ModalFooter>
       </Modal>
     </div>
