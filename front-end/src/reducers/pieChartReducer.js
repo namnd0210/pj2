@@ -1,12 +1,13 @@
 import * as types from '../actions/actionTypes';
 const initialState = {
   isLoading: true,
-  data: []
+  data: [],
+  requestData: []
 };
 
 export default function (state = initialState, action) {
-  switch(action.type) {
-    case types.START_FETCH_PIECHART_DATA: 
+  switch (action.type) {
+    case types.START_FETCH_PIECHART_DATA:
       return {
         ...state,
         isLoading: action.isLoading

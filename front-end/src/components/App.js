@@ -1,30 +1,29 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import DatePicker from './DatePicker/DatePicker';
 import PieChart from './PieChart/PieChart';
-import Ranking from './barChart/Ranking';
+import BarChart from './BarChart/BarChart';
 import HeatChart from './HeatChart/HeatChart';
 
 function App() {
+  const { startDate, endDate } = useSelector(state => state.datePickerData);
   return (
     <div className="container">
-      <div>
+      <div className="my-3">
         <DatePicker />
       </div>
-      <div className="row">
+      <div className="row" style={{ height: "450px" }}>
         <div className="col-md-12 col-lg-6">
-          <h2>Summary Device</h2>
-          <PieChart />
+          <PieChart startDate={startDate} endDate={endDate} />
         </div>
         <div className="col-md-12 col-lg-6">
-          <h2>Ranking</h2>
-          <Ranking />
+          <BarChart startDate={startDate} endDate={endDate} />
         </div>
       </div>
-      <div className="row">
+      <div className="row" style={{ height: "450px" }}>
         <div className="col-12">
-          <h2>Device By Hour</h2>
-          <HeatChart />
+          <HeatChart startDate={startDate} endDate={endDate} />
         </div>
       </div>
     </div>

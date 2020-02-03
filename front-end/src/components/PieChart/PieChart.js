@@ -1,62 +1,67 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   VictoryPie, VictoryLegend
 } from 'victory';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import _ from 'lodash';
 
 import PieChartItem from './PieChartItem';
 import { fetchPieChartData } from '../../actions';
 import Loading from '../Loading';
+import Modal from './Modal';
 
-const colorScale = ["#79c1b6", "#a285de"];
+const colorScale = ['#A4036F', '#17B890', '#DA394E', '#FFC253', '#A54657' , '#EDF060', '#F0803C'];
 
-
-class PieChart extends Component {
-  componentDidMount() {
-    const { startDate, endDate } = this.props.datePickerData;
-    this.props.fetchPieChartData(startDate, endDate);
+function shuffle(a) { // shuffle colors
+  for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
   }
+  return a;
+}
 
-  render() {
-    const { data, isLoading } = this.props.pieChartData;
-    return (
-      <svg viewBox="0 0 700 700">
-        {isLoading && <Loading color="#15e62a" />}
-        {!isLoading && <g>
+export default function PieChart({ startDate, endDate }) {
+  const { isLoading, data } = useSelector(state => state.pieChartData)
+  const dispatch = useDispatch()
+  const [handleData, setHandleData] = useState(data)
+
+  useEffect(() => {
+    dispatch(fetchPieChartData(startDate, endDate));
+  }, [startDate, endDate])
+
+  useEffect(() => {
+    if (data !== []) {
+      setHandleData(_.filter(data, o => o.isActive))
+    }
+  }, [data])
+
+  return (
+    <div>
+      <div className="row">
+        <h2 className="col-7">Summary Device</h2>
+        {!isLoading && <Modal className="col-5" startDate={startDate} endDate={endDate} />}
+      </div>
+      {isLoading && <Loading color="#15e62a" />}
+      {!isLoading &&
+        <svg viewBox="0 0 700 700">
           <VictoryPie
             standalone={false}
-            data={data}
+            data={handleData}
             colorScale={colorScale}
             innerRadius={100}
             style={{
               labels: { display: "none" }
             }}
           />
-          <VictoryLegend x={420} y={130}
+          <VictoryLegend x={420} y={50}
             gutter={20}
             rowGutter={{ top: 0, bottom: 60 }}
-            data={data}
+            data={handleData}
             standalone={false}
             dataComponent={<PieChartItem />}
-            colorScale={colorScale}
+            colorScale={shuffle(colorScale)}
           />
-        </g>}
-      </svg>
-    );
-  }
+        </svg>}
+    </div>
+  );
 }
-
-const mapStateToProps = (state) => {
-  return {
-    pieChartData: state.pieChartData,
-    datePickerData: state.datePickerData
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchPieChartData: (startDate, endDate) => dispatch(fetchPieChartData(startDate, endDate))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PieChart)
