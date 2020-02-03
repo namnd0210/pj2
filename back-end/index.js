@@ -20,8 +20,8 @@ app.get('/request/device_summary/', (req, res) => {
       { x: "Linux", y: _.random(0, 100), isActive: true }
     ];
     if (req.query.data !== undefined) {
-      const OSList = req.query.data.isActive;
-      const handleModalData = _.map(deviceSummary, (o, i) => OSList[i] === 'true' ? ({ ...o, isActive: true }) : ({ ...o, isActive: false }))
+      const listOS = req.query.data.isActive;
+      const handleModalData = _.map(deviceSummary, (o, i) => ({ ...o, isActive: listOS[i] === 'true' }))
       res.send(handleModalData)
     }
     else {

@@ -10,7 +10,15 @@ import { fetchPieChartData } from '../../actions';
 import Loading from '../Loading';
 import Modal from './Modal';
 
-const colorScale = ['#a65b5b', '#f2865e', '#f2bea0', '#fad56a', '#f8e4a9', '#788abf'];
+const colorScale = ['#A4036F', '#17B890', '#DA394E', '#FFC253', '#A54657' , '#EDF060', '#F0803C'];
+
+function shuffle(a) { // shuffle colors
+  for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 export default function PieChart({ startDate, endDate }) {
   const { isLoading, data } = useSelector(state => state.pieChartData)
@@ -51,7 +59,7 @@ export default function PieChart({ startDate, endDate }) {
             data={handleData}
             standalone={false}
             dataComponent={<PieChartItem />}
-            colorScale={colorScale}
+            colorScale={shuffle(colorScale)}
           />
         </svg>}
     </div>

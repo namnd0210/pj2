@@ -38,6 +38,7 @@ export default function DatePicker() {
         onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
       />
       <Button
+        style={{ padding: "10px 20px", marginLeft: "20px" }}
         color="primary"
         onClick={onClick}
       >OK</Button>

@@ -24,7 +24,7 @@ export default function Ranking({ startDate, endDate }) {
       <h2>Ranking</h2>
       {isLoading && <Loading color="#eb09eb" />}
       {!isLoading &&
-        <svg viewBox="0 -50 600 600">
+        <svg viewBox="0 -50 500 500">
           <VictoryChart
             standalone={false}
           >

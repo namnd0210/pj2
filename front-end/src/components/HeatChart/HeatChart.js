@@ -143,14 +143,14 @@ export default function HeatChart({ startDate, endDate }) {
               <div className="col-3 pr-0">
                 {0}
               </div>
-              <div className="col-3 px-0">
+              <div className="col-3 px-0" style={{ textIndent: "-5px" }}>
                 {5}
               </div>
-              <div className="col-3 px-0">
+              <div className="col-3 px-0" style={{ textIndent: "-13px" }}>
                 {10}
               </div>
               <div className="col-3 pl-0 mb-4 d-flex justify-content-between">
-                <div>
+                <div style={{ textIndent: "-20px" }}>
                   {15}
                 </div>
                 <div>

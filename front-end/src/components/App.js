@@ -10,7 +10,7 @@ function App() {
   const { startDate, endDate } = useSelector(state => state.datePickerData);
   return (
     <div className="container">
-      <div className="mb-4">
+      <div className="my-3">
         <DatePicker />
       </div>
       <div className="row" style={{ height: "450px" }}>
