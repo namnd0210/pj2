@@ -10,12 +10,12 @@ export default function (state = initialState, action) {
     case types.START_FETCH_HEATCHART_DATA:
       return {
         ...state,
-        isLoading: true
+        isLoading: action.isLoading
       }
     case types.STOP_FETCH_HEATCHART_DATA:
       return {
         data: action.data,
-        isLoading: false
+        isLoading: action.isLoading
       }
     default:
       return state

@@ -14,7 +14,7 @@ export default function DatePicker() {
   const prevStartDate = useSelector(state => state.datePickerData.startDate)
   const prevEndDate = useSelector(state => state.datePickerData.endDate)
   const [startDate, setStartDate] = useState(moment())
-  const [endDate, setEndDate] = useState(moment().add(1, 'day'))
+  const [endDate, setEndDate] = useState(moment().add(30, 'day'))
   const [focusedInput, setFocusedInput] = useState(null)
 
   const onClick = () => {

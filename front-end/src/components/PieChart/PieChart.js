@@ -10,12 +10,12 @@ import { fetchPieChartData } from '../../actions';
 import Loading from '../Loading';
 import Modal from './Modal';
 
-const colorScale = ['#A4036F', '#17B890', '#DA394E', '#FFC253', '#A54657' , '#EDF060', '#F0803C'];
+const colorScale = ['#A4036F', '#17B890', '#DA394E', '#FFC253', '#A54657', '#EDF060', '#F0803C'];
 
 function shuffle(a) { // shuffle colors
   for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
 }
@@ -23,7 +23,7 @@ function shuffle(a) { // shuffle colors
 export default function PieChart({ startDate, endDate }) {
   const { isLoading, data } = useSelector(state => state.pieChartData)
   const dispatch = useDispatch()
-  const [handleData, setHandleData] = useState(data)
+  const [handleData, setHandleData] = useState([])
 
   useEffect(() => {
     dispatch(fetchPieChartData(startDate, endDate));
