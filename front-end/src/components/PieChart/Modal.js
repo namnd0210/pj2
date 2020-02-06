@@ -15,7 +15,7 @@ export default ({ startDate, endDate }) => {
 
   const toggle = () => {
     setModal(!modal)
-    if (modal && handleData !== data) dispatch(fetchPieChartData(startDate, endDate, handleData))
+    if (modal && !_.isEqual(handleData, data)) dispatch(fetchPieChartData(startDate, endDate, handleData))
   };
 
   const onClick = (item, index) => {

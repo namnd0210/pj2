@@ -68,7 +68,7 @@ export default function LineChart({ startDate, endDate }) {
       const maxWeek = _.maxBy([_.maxBy(weekData[0], 'y'), _.maxBy(weekData[1], 'y')], 'y')
       const maxMonth = _.maxBy([_.maxBy(monthData[0], 'y'), _.maxBy(monthData[1], 'y')], 'y')
       if (maxDay !== undefined)
-        setMaxHandleData([_.ceil(maxDay.y), _.ceil(maxWeek.y, -1), _.ceil(maxMonth.y, -2)])
+        setMaxHandleData([_.ceil(maxDay.y, -1), _.ceil(maxWeek.y, -2), _.ceil(maxMonth.y, -2)])
       setHandleData([dayData, weekData, monthData])
     }
   }, [data])
