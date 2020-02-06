@@ -26,6 +26,7 @@ export default function HeatChart({ startDate, endDate }) {
 
   const options = {
     chart: {
+      width: 500,
       height: 350,
       type: 'heatmap',
       toolbar: {
@@ -131,12 +132,12 @@ export default function HeatChart({ startDate, endDate }) {
       {isLoading && <Loading color="#15e6d4" />}
       {!isLoading && <div className="container">
         <div className="row">
-          <div className="col-lg-9 pr-0">
+          <div className="col-sm-9 pr-0">
             <Chart
               options={options}
               series={series}
               type="heatmap"
-              height={350}
+              height={300}
             />
             <div className="gradientLine" />
             <div className="row">
@@ -159,12 +160,12 @@ export default function HeatChart({ startDate, endDate }) {
               </div>
             </div>
           </div>
-          <div className="col-lg-3 pl-0" >
+          <div className="col-sm-3 px-0" >
             <Chart
               options={summaryOptions}
               series={summarySeries}
               type="bar"
-              height={350}
+              height={300}
             />
           </div>
         </div>

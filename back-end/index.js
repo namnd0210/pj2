@@ -2,7 +2,8 @@ const express = require('express')
 const app = express()
 const port = 8081
 var cors = require('cors')
-const _ = require('lodash');
+const _ = require('lodash')
+const moment = require('moment')
 
 
 app.use(cors())
@@ -10,7 +11,7 @@ app.use(cors())
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.get('/request/device_summary/', (req, res) => {
-  res.setTimeout(10000, () => {
+  res.setTimeout(1000, () => {
     const deviceSummary = [
       { x: "Android", y: _.random(0, 100), isActive: true },
       { x: "Windows", y: _.random(0, 100), isActive: true },
@@ -31,7 +32,7 @@ app.get('/request/device_summary/', (req, res) => {
 })
 
 app.get('/request/ranking/', (req, res) => {
-  res.setTimeout(15000, () => {
+  res.setTimeout(1500, () => {
     const ranking = [
       { x: "Day 1", y: _.random(1, 20) },
       { x: "Day 2", y: _.random(1, 20) },
@@ -46,7 +47,7 @@ app.get('/request/ranking/', (req, res) => {
 })
 
 app.get('/request/device_by_hour/', (req, res) => {
-  res.setTimeout(5000, () => {
+  res.setTimeout(500, () => {
     const deviceByHour = _.map(
       ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
       (day) => ({
@@ -55,10 +56,40 @@ app.get('/request/device_by_hour/', (req, res) => {
           x: `${time}:00`,
           y: _.random(0, 2) !== 2 ? _.random(0, 30) : _.random(0, 50)
         }))
-
       })
     )
     res.send(deviceByHour)
+  })
+})
+
+app.get('/request/device/', (req, res) => {
+  res.setTimeout(700, () => {
+    const { from_date, to_date } = req.query
+
+    const devices =
+      _.map(
+        ["ios", "Android"],
+        device => {
+          const startDate = moment(from_date, 'DD-MM-YYYY');
+          const endDate = moment(to_date, 'DD-MM-YYYY');
+          let datesBetween = [];
+          let i = startDate;
+
+          while (i <= endDate) {
+            datesBetween.push({
+              x: i.clone().format('DD-MM-YYYY'),
+              y: _.random(0, 2) !== 2 ? _.random(0, 30) : _.random(0, 50)
+            })
+            i.add(1, 'days');
+          }
+
+          return ({
+            device: device,
+            data: datesBetween
+          })
+        }
+      )
+    res.send(devices)
   })
 })
 

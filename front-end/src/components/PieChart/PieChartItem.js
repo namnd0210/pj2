@@ -8,13 +8,13 @@ export default function PieChartItem(data) {
       <g>
         <circle cx={x - 12} cy={y - 6} r="7" fill={style.fill} />
       </g>
-      <text x={x} y={y}>
+      <text x={x} y={y} style={{ fontSize: "20" }}>
         {data.datum.x}
       </text>
-      <text x={x + 200} y={y}>
+      <text x={x + 200} y={y} style={{ fontSize: "20" }}>
         {data.datum.y}
       </text>
-      <text x={x} y={y + 30} fontSize={25}>
+      <text x={x} y={y + 35} style={{ fontSize: "30" }}>
         {Math.round(data.datum.y / sum * 100)}%
       </text>
     </svg >
