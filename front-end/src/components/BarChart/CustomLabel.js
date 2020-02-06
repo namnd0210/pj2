@@ -10,12 +10,12 @@ export default function CustomLabel(data) {
   return (
     <svg>
       {
-        isLeft && <text x={x + 12} y={y - 10} style={{}}>
+        isLeft && <text x={x + 12} y={y - 15} style={{ fontSize: "25" }}>
           {xValue}
         </text>
       }
       {
-        !isLeft && <text x={x + 360} y={y - 10} style={{ direction: "rtl" }}>
+        !isLeft && <text x={x + 610} y={y - 15} style={{ direction: "rtl", fontSize: "25" }}>
           {yValue}
         </text>
       }
