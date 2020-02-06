@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  VictoryLine, VictoryChart, VictoryAxis, VictoryLabel, VictoryVoronoiContainer, VictoryLegend
+  VictoryLine, VictoryChart, VictoryAxis, VictoryTooltip, VictoryVoronoiContainer, VictoryLegend
 } from 'victory';
 import _ from 'lodash';
 import moment from 'moment';
@@ -14,6 +14,7 @@ export default function LineChart({ startDate, endDate }) {
   const dispatch = useDispatch();
   const [legendData, setLegendData] = useState([])
   const [handleData, setHandleData] = useState([])
+  const [maxHandleData, setMaxHandleData] = useState([])
   const [toggle, setToggle] = useState(
     [
       { type: "Day", isActive: true },
@@ -34,7 +35,7 @@ export default function LineChart({ startDate, endDate }) {
       const dayData = _.map(data, device => device.data)
 
       const weekData = _.map(data, o => {
-        const arr = [...o.data]
+        let arr = [...o.data]
         const newArr = []
         while (arr.length !== 0) {
           var date1 = moment(arr[0].x, 'DD-MM-YYYY');
@@ -49,7 +50,7 @@ export default function LineChart({ startDate, endDate }) {
       })
 
       const monthData = _.map(data, o => {
-        const arr = [...o.data]
+        let arr = [...o.data]
         const newArr = []
         while (arr.length !== 0) {
           var date1 = moment(arr[0].x, 'DD-MM-YYYY');
@@ -63,9 +64,16 @@ export default function LineChart({ startDate, endDate }) {
         return newArr
       })
 
+      const maxDay = _.maxBy([_.maxBy(dayData[0], 'y'), _.maxBy(dayData[1], 'y')], 'y')
+      const maxWeek = _.maxBy([_.maxBy(weekData[0], 'y'), _.maxBy(weekData[1], 'y')], 'y')
+      const maxMonth = _.maxBy([_.maxBy(monthData[0], 'y'), _.maxBy(monthData[1], 'y')], 'y')
+      if (maxDay !== undefined)
+        setMaxHandleData([_.ceil(maxDay.y), _.ceil(maxWeek.y, -1), _.ceil(maxMonth.y, -2)])
       setHandleData([dayData, weekData, monthData])
     }
   }, [data])
+
+
 
   const colors = ["#17B890", '#DA394E']
 
@@ -105,16 +113,8 @@ export default function LineChart({ startDate, endDate }) {
         <svg viewBox="0 0 1000 700" >
           <g transform={'translate(0,50)'}>
             <VictoryChart height={400} width={1000}
-              standalone={false}>
-              <VictoryAxis dependentAxis
-                standalone={false}
-                style={{
-                  axis: { stroke: "none" },
-                  grid: { stroke: "#aaa" },
-                  tickLabels: { fontSize: 20, padding: 10 }
-                }}
-                minDomain={{ y: 10 }}
-              />
+              standalone={false}
+            >
 
               <VictoryAxis
                 standalone={false}
@@ -129,8 +129,23 @@ export default function LineChart({ startDate, endDate }) {
 
               {_.map(toggle, (t, i) =>
                 t.isActive ?
+                  <VictoryAxis dependentAxis
+                    domain={[0, maxHandleData[i]]}
+                    standalone={false}
+                    style={{
+                      axis: { stroke: "none" },
+                      grid: { stroke: "#aaa" },
+                      tickLabels: { fontSize: 20, padding: 10 }
+                    }}
+                  />
+                  : null
+              )}
+
+              {_.map(toggle, (t, i) =>
+                t.isActive ? (
                   _.map(handleData[i], (d, j) =>
                     <VictoryLine
+                      padding={50}
                       standalone={false}
                       key={j}
                       data={d}
@@ -140,8 +155,12 @@ export default function LineChart({ startDate, endDate }) {
                           strokeWidth: 5
                         }
                       }}
+                      labels={({ datum }) => `y: ${datum.y}`}
+                      labelComponent={<VictoryTooltip standalone={false} />}
                     />
                   )
+                )
+
                   : null
               )}
 
