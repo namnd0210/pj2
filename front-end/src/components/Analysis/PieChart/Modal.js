@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
-import { fetchPieChartData } from '../../actions';
+import { fetchPieChartData } from '../../../actions';
 
 export default ({ startDate, endDate }) => {
   const { data } = useSelector(state => state.pieChartData)

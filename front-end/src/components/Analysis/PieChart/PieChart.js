@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 
 import PieChartItem from './PieChartItem';
-import { fetchPieChartData } from '../../actions';
-import Loading from '../Loading';
+import { fetchPieChartData } from '../../../actions';
+import Loading from '../../Loading';
 import Modal from './Modal';
 
 const colorScale = ['#A4036F', '#17B890', '#DA394E', '#FFC253', '#A54657', '#EDF060', '#F0803C'];

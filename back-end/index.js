@@ -69,7 +69,7 @@ app.get('/request/device/', (req, res) => {
     const devices =
       _.map(
         ["ios", "Android"],
-        device => {
+        (device) => {
           const startDate = moment(from_date, 'DD-MM-YYYY');
           const endDate = moment(to_date, 'DD-MM-YYYY');
           let datesBetween = [];
@@ -92,5 +92,20 @@ app.get('/request/device/', (req, res) => {
     res.send(devices)
   })
 })
+
+app.get('/device_list/', (req, res) => {
+  res.setTimeout(1000, () => {
+    const deviceList = [
+      { x: "Android", y: _.random(0, 100)},
+      { x: "Windows", y: _.random(0, 100)},
+      { x: "iOS", y: _.random(0, 100)},
+      { x: "Os X", y: _.random(0, 100)},
+      { x: "Unknown", y: _.random(0, 100)},
+      { x: "Linux", y: _.random(0, 100)}
+    ];
+    res.send(deviceList)
+  })
+})
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

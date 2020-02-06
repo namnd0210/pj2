@@ -6,8 +6,8 @@ import {
 import _ from 'lodash';
 import moment from 'moment';
 
-import { fetchLineChartData } from '../../actions/'
-import Loading from '../Loading';
+import { fetchLineChartData } from '../../../actions'
+import Loading from '../../Loading';
 
 export default function LineChart({ startDate, endDate }) {
   const { data, isLoading } = useSelector(state => state.lineChartData)
