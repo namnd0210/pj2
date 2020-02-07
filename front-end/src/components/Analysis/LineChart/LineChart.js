@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  VictoryLine, VictoryChart, VictoryAxis, VictoryTooltip, VictoryVoronoiContainer, VictoryLegend
+  VictoryLine, VictoryChart, VictoryAxis, VictoryTooltip, VictoryLegend
 } from 'victory';
 import _ from 'lodash';
 import moment from 'moment';
 
-import { fetchLineChartData } from '../../actions/'
-import Loading from '../Loading';
+import { fetchLineChartData } from '../../../actions'
+import Loading from '../../Loading';
 
 export default function LineChart({ startDate, endDate }) {
   const { data, isLoading } = useSelector(state => state.lineChartData)
@@ -68,7 +68,7 @@ export default function LineChart({ startDate, endDate }) {
       const maxWeek = _.maxBy([_.maxBy(weekData[0], 'y'), _.maxBy(weekData[1], 'y')], 'y')
       const maxMonth = _.maxBy([_.maxBy(monthData[0], 'y'), _.maxBy(monthData[1], 'y')], 'y')
       if (maxDay !== undefined)
-        setMaxHandleData([_.ceil(maxDay.y), _.ceil(maxWeek.y, -1), _.ceil(maxMonth.y, -2)])
+        setMaxHandleData([_.ceil(maxDay.y, -1), _.ceil(maxWeek.y, -2), _.ceil(maxMonth.y, -2)])
       setHandleData([dayData, weekData, monthData])
     }
   }, [data])

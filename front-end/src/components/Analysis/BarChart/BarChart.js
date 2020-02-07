@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import {
-  VictoryChart, VictoryBar, VictoryAxis, VictoryLabel
+  VictoryChart, VictoryBar, VictoryAxis
 } from 'victory';
 import _ from 'lodash';
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchBarChartData } from '../../actions';
+import { fetchBarChartData } from '../../../actions';
 import CustomLabel from './CustomLabel';
-import Loading from '../Loading';
+import Loading from '../../Loading';
 
 export default function Ranking({ startDate, endDate }) {
   const { data, isLoading } = useSelector(state => state.barChartData)

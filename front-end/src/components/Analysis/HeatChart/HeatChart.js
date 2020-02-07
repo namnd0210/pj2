@@ -3,8 +3,8 @@ import Chart from 'react-apexcharts';
 import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 
-import { fetchHeatChartData } from '../../actions';
-import Loading from '../Loading';
+import { fetchHeatChartData } from '../../../actions';
+import Loading from '../../Loading';
 import './HeatChart.css';
 
 export default function HeatChart({ startDate, endDate }) {

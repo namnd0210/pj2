@@ -6,7 +6,7 @@ import { Button } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 
-import { setDate } from '../../actions';
+import { setDate } from '../../../actions';
 
 
 export default function DatePicker() {
