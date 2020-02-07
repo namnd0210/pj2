@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {
-  VictoryChart, VictoryBar, VictoryAxis, VictoryLabel
+  VictoryChart, VictoryBar, VictoryAxis
 } from 'victory';
 import _ from 'lodash';
 import { useDispatch, useSelector } from "react-redux";

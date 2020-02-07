@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 import Analysis from './Analysis/';
@@ -23,10 +24,11 @@ function App() {
           </li>
         </ul>
         <Switch>
+          <Redirect exact from="/" to="analysis" />
           <Route exact path="/analysis">
             <Analysis />
           </Route>
-          <Route path="/device_list">
+          <Route exact path="/device_list">
             <DeviceList />
           </Route>
         </Switch>

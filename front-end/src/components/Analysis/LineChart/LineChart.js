@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  VictoryLine, VictoryChart, VictoryAxis, VictoryTooltip, VictoryVoronoiContainer, VictoryLegend
+  VictoryLine, VictoryChart, VictoryAxis, VictoryTooltip, VictoryLegend
 } from 'victory';
 import _ from 'lodash';
 import moment from 'moment';
