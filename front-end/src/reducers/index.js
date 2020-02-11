@@ -1,19 +1,19 @@
 import { combineReducers } from 'redux';
 
-import barChartData from './barChartReducer';
-import pieChartData from './pieChartReducer';
-import heatChartData from './heatChartReducer';
-import lineChartData from './lineChartReducer';
-import datePickerData from './datePickerReducer';
+import barChartData from './barChart';
+import pieChartData from './pieChart';
+import heatChartData from './heatChart';
+import lineChartData from './lineChart';
+import datePickerData from './datePicker';
 import deviceList from './deviceList';
 
 const reducers = combineReducers({
-  barChartData: barChartData,
-  pieChartData: pieChartData,
-  heatChartData: heatChartData,
-  lineChartData: lineChartData,
-  datePickerData: datePickerData,
-  deviceList: deviceList
+  barChartData,
+  pieChartData,
+  heatChartData,
+  lineChartData,
+  datePickerData,
+  deviceList,
 })
 
 export default reducers
