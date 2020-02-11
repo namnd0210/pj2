@@ -2,7 +2,7 @@ import * as actions from '../../src/actions'
 import * as types from '../../src/constant/actionTypes'
 
 
-describe('./datePicker', () => {
+describe('action creator', () => {
   it('setDate', () => {
     const startDate = ''
     const endDate = ''

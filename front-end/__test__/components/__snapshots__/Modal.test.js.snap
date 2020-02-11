@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Clicked Modal 1`] = `
+<div>
+  <button
+    aria-label={null}
+    className="btn btn-success"
+    onClick={[Function]}
+    style={
+      Object {
+        "padding": "10px 20px",
+      }
+    }
+    type="button"
+  >
+    +
+  </button>
+</div>
+`;

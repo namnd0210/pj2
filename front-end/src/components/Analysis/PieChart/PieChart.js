@@ -19,7 +19,6 @@ function shuffle(a) { // shuffle colors
   }
   return a;
 }
-
 export default function PieChart({ startDate, endDate }) {
   const { isLoading, data } = useSelector(state => state.pieChartData)
   const dispatch = useDispatch()

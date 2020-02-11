@@ -2,11 +2,10 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import * as actions from '../../src/actions'
 import * as types from '../../src/constant/actionTypes'
-import _ from 'lodash'
 
 const mockStore = configureMockStore([thunk])
 
-describe('async actions', () => {
+describe('async action creator', () => {
   it('creates STOP_FETCH_BARCHART_DATA when fetching bar chart data has been done', () => {
     const startDate = ''
     const endDate = ''
