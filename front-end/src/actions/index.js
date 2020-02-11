@@ -1,8 +1,8 @@
-import { fetchPieChartData } from './pieChartAction';
-import { fetchBarChartData } from './barChartAction';
-import { fetchHeatChartData } from './heatChartAction';
-import { fetchLineChartData } from './lineChartAction';
-import { setDate } from './datePickerAction';
+import { fetchPieChartData } from './pieChart';
+import { fetchBarChartData } from './barChart';
+import { fetchHeatChartData } from './heatChart';
+import { fetchLineChartData } from './lineChart';
+import { setDate } from './datePicker';
 import { fetchDeviceListData } from './deviceList';
 
 export {

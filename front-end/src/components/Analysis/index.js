@@ -14,7 +14,7 @@ export default () => {
       <div className="my-3">
         <DatePicker />
       </div>
-      <div className="row h-50">
+      <div className="row" style={{ height: "40%" }}>
         <div className="col-md-12 col-lg-5">
           <PieChart startDate={startDate} endDate={endDate} />
         </div>
@@ -22,7 +22,7 @@ export default () => {
           <LineChart startDate={startDate} endDate={endDate} />
         </div>
       </div>
-      <div className="row h-50">
+      <div className="row" style={{ height: "40%" }}>
         <div className="col-md-12 col-lg-5">
           <BarChart startDate={startDate} endDate={endDate} />
         </div>
