@@ -25,12 +25,12 @@ export default ({ startDate, endDate }) => {
       ..._.slice(handleData, index + 1)
     ])
   }
-
+//  {<FontAwesomeIcon icon={faAngleDown} />} //cant use
   return (
     <div>
       <Button color="success" onClick={toggle} style={{ padding: "10px 20px" }}>+</Button>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle} charCode={<FontAwesomeIcon icon={faAngleDown} />}></ModalHeader>
+        <ModalHeader toggle={toggle} charCode='x'></ModalHeader>
         <ModalBody>
           <div>
             {
