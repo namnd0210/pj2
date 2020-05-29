@@ -1,4 +1,4 @@
-ul {
+/* ul {
   padding-inline-start: 0;
   margin-bottom: 0;
 }
@@ -7,4 +7,33 @@ li {
   text-decoration: none;
   padding: 15px 10px;
   font-size: 24px;
+} */
+
+:root {
+  --ck-z-default: 100;
+  --ck-z-modal: calc( var(--ck-z-default) + 999 );
+}
+
+.ck.ck-editor__editable_inline>:first-child {
+  margin-block-start: 5px;
+}
+
+.ck.ck-editor__editable_inline>:last-child {
+  margin-block-end: 5px;
+}
+
+.ck.ck-editor__editable_inline p {
+  margin: 5px;
+}
+
+.ck.ck-editor__editable_inline ul, ul li {
+  margin-bottom: 5px;
+}
+
+.ck.ck-editor__editable_inline ol, ol li {
+  margin-bottom: 5px;
+}
+
+.ck.ck-editor__editable_inline ul.todo-list, .ck-content .todo-list li {
+  margin-bottom: 0px;
 }

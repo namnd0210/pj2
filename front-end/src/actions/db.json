@@ -1,0 +1,46 @@
+{
+  "report": {
+    "report_message": "<p><strong>Lorem</strong> ipsum dolor sit amet, consectetur adipiscing elit. <code>Ut quis tellus</code> dictum quam suscipit rutrum. Ut fringilla neque eu odio auctor feugiat</p><p><i><strong>Vivamus et lorem et risus suscipit sodales</strong></i>. Pellentesque cursus pharetra libero, auctor fringilla ante blandit ac. Mauris pharetra <a href='https://www.lipsum.com/feed/html'>scelerisque</a> massa nec porttitor. Vivamus tempus risus ex, id suscipit neque <s>malesuada</s> sed. Vivamus quis ornare diam. Etiam ullamcorper ex sit amet mauris accumsan</p><ul><li>Duis rutrum quam ut congue imperdiet.</li><li>Duis rutrum quam ut congue imperdiet.</li></ul><ol><li>Duis rutrum quam ut congue imperdiet.</li><li>Duis rutrum quam ut congue imperdiet.</li><li>Duis rutrum quam ut congue imperdiet.</li><li>Duis rutrum quam ut congue imperdiet.</li></ol><p><span class='mention' data-mention='@cflores'>@cflores</span> <span class='mention' data-mention='<@A123>'><@A123></span> <span class='mention' data-mention='@Trung Ha'>@Trung Ha</span>&nbsp;</p>",
+    "slack_channels": {
+      "users": [
+        { "id": "100", "user_id": "<@A123>", "user_name": "@Trung Ha" },
+        { "id": "101", "user_id": "<@B124>", "user_name": "@Nguyen The Thinh" },
+        { "id": "102", "user_id": "<@C125>", "user_name": "@Nguyen Duc Nam" }
+      ],
+      "channels": [
+        { "id": "123", "channel_id": "<@W123>", "channel_name": "#bunbu-imp" },
+        { "id": "124", "channel_id": "<@W456>", "channel_name": "#bunbu-staff" },
+        { "id": "125", "channel_id": "<@W789>", "channel_name": "#bunbu-training" }
+      ]
+    },
+    "attachments": [
+      "drive.google.com/005.jpg",
+      "drive.google.com/006.mp4"
+    ] 
+  },
+  "reportAdmin": {
+    "report_message": "<p><strong>Lorem</strong> ipsum dolor sit amet, consectetur adipiscing elit. <code>Ut quis tellus</code> dictum quam suscipit rutrum. Ut fringilla neque eu odio auctor feugiat</p><p><i><strong>Vivamus et lorem et risus suscipit sodales</strong></i>. Pellentesque cursus pharetra libero, auctor fringilla ante blandit ac. Mauris pharetra <a href='https://www.lipsum.com/feed/html'>scelerisque</a> massa nec porttitor. Vivamus tempus risus ex, id suscipit neque <s>malesuada</s> sed. Vivamus quis ornare diam. Etiam ullamcorper ex sit amet mauris accumsan</p><ul><li>Duis rutrum quam ut congue imperdiet.</li><li>Duis rutrum quam ut congue imperdiet.</li></ul><ol><li>Duis rutrum quam ut congue imperdiet.</li><li>Duis rutrum quam ut congue imperdiet.</li><li>Duis rutrum quam ut congue imperdiet.</li><li>Duis rutrum quam ut congue imperdiet.</li></ol><p><span class='mention' data-mention='@cflores'>@cflores</span> <span class='mention' data-mention='<@A123>'><@A123></span> <span class='mention' data-mention='@Trung Ha'>@Trung Ha</span>&nbsp;</p>",
+    "attachments": [
+      "drive.google.com/005.jpg",
+      "drive.google.com/006.mp4"
+    ],
+    "users": [
+      { "id": "100", "user_id": "<@A123>", "user_name": "@Trung Ha" },
+      { "id": "101", "user_id": "<@B124>", "user_name": "@Nguyen The Thinh" },
+      { "id": "102", "user_id": "<@C125>", "user_name": "@Nguyen Duc Nam" }
+    ],
+    "send_from": "@Nguyen Duc Nam",
+    "send_to": [
+      {
+        "id": "#channel_name_1",
+        "channel_id": "<@W123>",
+        "channel_name": "#staff"
+      },
+      {
+        "id": "#channel_name_2",
+        "channel_id": "<@W456>",
+        "channel_name": "#demo"
+      }
+    ] 
+  }
+}

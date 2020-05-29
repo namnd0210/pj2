@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import _ from 'lodash';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faCheck, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 import { fetchPieChartData } from '../../../actions';
 
@@ -30,7 +30,7 @@ export default ({ startDate, endDate }) => {
     <div>
       <Button color="success" onClick={toggle} style={{ padding: "10px 20px" }}>+</Button>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle} charCode={<FontAwesomeIcon icon={faAngleDown} />}></ModalHeader>
+        <ModalHeader toggle={toggle} charCode="x"></ModalHeader>
         <ModalBody>
           <div>
             {
@@ -43,7 +43,7 @@ export default ({ startDate, endDate }) => {
                   <div className="col-10">{item.x}</div>
                   {item.isActive &&
                     <div className="col-2">
-                      <FontAwesomeIcon icon={faCheck} />
+                      {/* <FontAwesomeIcon icon={faCheck} /> */}
                     </div>
                   }
                 </div>

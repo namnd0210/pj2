@@ -5,6 +5,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import { Button } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
+import { isInclusivelyBeforeDay } from 'react-dates';
 
 import { setDate } from '../../../actions';
 
@@ -36,6 +37,8 @@ export default function DatePicker() {
         }} // PropTypes.func.isRequired,
         focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
         onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
+        isOutsideRange={day =>true
+        }
       />
       <Button
         style={{ padding: "10px 20px", marginLeft: "20px" }}
